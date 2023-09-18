@@ -1,0 +1,16 @@
+dataset: wild_mut
+aug: baseline
+model_type: gnn-transformer
+
+gnn_type: gated_gcn
+gnn_virtual_node: false
+
+graph_pooling: cls
+
+batch_size: 16
+lr: 0.0001
+
+runs: 1
+seed: 12344
+
+transformer_norm_input: true

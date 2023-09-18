@@ -1,0 +1,7 @@
+dataset: wild_mut
+aug: baseline
+model_type: gnn
+gnn_type: gated_gcn
+gnn_virtual_node: false
+runs: 1
+seed: 12344
