@@ -1,6 +1,6 @@
 # GES_PPI
 
-##Description
+## Description
 This repo contains the code and data for our paper "An Interpretable Deep Geometric Learning Model to Predict the Effects of Mutations on Protein-ligand Interactions Using Large-scale Protein Language Model". Here we developed a geometric deep learning model designed to predict changes in binding affinity for protein-ligand interactions. The model employs a graph Transformer framework that can learn long-distance relationships, embeds a gated graph neural network, and incorporates a pre-trained large-scale protein language model to ultimately achieve the prediction of ΔΔG. The efficacy of the model is thoroughly evaluated experimentally and a reasonable interpretability analysis is given. This new approach to study protein stability alterations by implementing geometric deep learning methods has important implications for future stability prediction efforts.
 
 
