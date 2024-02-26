@@ -39,6 +39,7 @@ def unpad_batch(padded_h_node, prev_h_node, num_nodes, origin_mask, max_num_node
 
     for i, mask in enumerate(origin_mask):
         num_node = num_nodes[i]
+        
         if num_node > max_num_nodes:
             num_node = max_num_nodes
             # cutoff mask
@@ -46,8 +47,6 @@ def unpad_batch(padded_h_node, prev_h_node, num_nodes, origin_mask, max_num_node
             indices = indices[-num_node:]
             mask = torch.zeros_like(mask)
             mask[indices] = True
-        # logger.info("prev_h_node:", prev_h_node.size())
-        # logger.info("padded_h_node:", padded_h_node.size())
-        # logger.info("mask:", mask.size())
+
         prev_h_node = prev_h_node.masked_scatter(mask.unsqueeze(-1), padded_h_node[-num_node:, i])
     return prev_h_node
