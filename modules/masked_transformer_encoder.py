@@ -9,9 +9,7 @@ from loguru import logger
 
 class CausalSelfAttention(nn.Module):
     """
-    A vanilla multi-head masked self-attention layer with a projection at the end.
-    It is possible to use torch.nn.MultiheadAttention here but I am including an
-    explicit implementation here to show that there is nothing too scary here.
+    Vanilla multi-head masked self-attention layer with a projection at the end.
     """
 
     def __init__(self, n_embd, n_head, attn_pdrop, resid_pdrop):
@@ -84,16 +82,6 @@ class MaskedTransformerBlock(nn.Module):
     def __init__(self, n_layer, n_embd, n_ff, n_head, attn_pdrop, resid_pdrop, prenorm=True):
         super().__init__()
         self.blocks = nn.ModuleList([Block(n_embd, n_ff, n_head, attn_pdrop, resid_pdrop, prenorm) for _ in range(n_layer)])
-        # self.apply(self._init_weights)
-
-    # def _init_weights(self, module):
-    #     if isinstance(module, (nn.Linear, nn.Embedding)):
-    #         module.weight.data.normal_(mean=0.0, std=0.02)
-    #         if isinstance(module, nn.Linear) and module.bias is not None:
-    #             module.bias.data.zero_()
-    #     elif isinstance(module, nn.LayerNorm):
-    #         module.bias.data.zero_()
-    #         module.weight.data.fill_(1.0)
 
     def forward(self, x, attn_mask=None, valid_input_mask=None):
         for block in self.blocks:
