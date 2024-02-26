@@ -143,7 +143,7 @@ def main():
         test_data = compute_adjacency_list_cached(dataset[split_idx["test"]], key=f"{args.dataset}_test")
         valid_data = compute_adjacency_list_cached(dataset_eval[split_idx["valid"]], key=f"{args.dataset}_valid")
         train_data = compute_adjacency_list_cached(dataset[split_idx["train"]], key=f"{args.dataset}_train")
-        logger.debug("Finished computing adjacency list")
+        logger.debug("Finish computing adjacency list")
 
         eval_bs = args.batch_size if args.eval_batch_size is None else args.eval_batch_size
         train_loader = DataLoader(train_data, batch_size=args.batch_size, shuffle=True, num_workers=args.num_workers, pin_memory=True)
