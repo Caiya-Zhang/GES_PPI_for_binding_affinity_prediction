@@ -19,7 +19,7 @@ import utils
 from data.adj_list import compute_adjacency_list_cached
 from dataset import DATASET_UTILS
 from models import get_model_and_parser
-from trainers import get_trainer_and_parser
+from trainers import get_trainer_and_parser, BaseTrainer
 
 wandb.init(project="graph-aug")
 now = datetime.now()
@@ -137,6 +137,7 @@ def main():
     task_type = dataset_.task_type
     split_idx = dataset_.get_idx_split()
     calc_loss = dataset_util.loss_fn(task_type)
+    ##avg_cv_loss = BaseTrainer.cross_validate(model_class, args.dataset, device, args, calc_loss, n_splits=10)
     eval = dataset_util.eval
 
     def create_loader(dataset, dataset_eval):
